@@ -2,7 +2,8 @@
 This is a module for the [MagicMirror](https://github.com/MichMich/MagicMirror/tree/develop). This module shows air quality based on the US AirNow API.
 
 ## Installation
-1. Navigate into your MagicMirror's `modules` folder and execute `git clone https://github.com/nigel-daniels/MMM-AirNow`.  A new folder `MMM-AirNow` will appear.
+1. Navigate into your MagicMirror's `modules` folder and execute `git clone https://github.com/nigel-daniels/MMM-AirNow`.  A new folder `MMM-AirNow` will appear, navigate into it.
+2. Execute `npm install` to install the node dependencies.
 
 ## Config
 The entry in `config.js` can include the following options:
@@ -18,10 +19,9 @@ Here is an example of an entry in `config.js`
 {
     module:		'MMM-AirNow',
     position:	'top_left',
-    classes:	'dimmed medium',
     config:		{
-                api_key:	'xxxxxxxxxxxx',
-                zip_code:	'95110'
+                api_key:	'your-api-key',
+                zip_code:	'20500'
                 }
 },
 ```
