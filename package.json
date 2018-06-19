@@ -1,26 +1,26 @@
 {
-    "name":         "MMM-AirNow",
-    "version":      "1.0.0",
-    "description":  "MagicMirror 2 module to show air quality based on the US AirNow API.",
-    "repository":   {
+          "name": "MMM-AirNow",
+          "version": "1.0.0",
+          "description": "MagicMirror 2 module to show air quality based on the US AirNow API.",
+          "repository": {
                     "type": "git",
-                    "url":  "git+https://github.com/nigel-daniels/MMM-AirNow"
-                    },
-    "keywords":     [
+                    "url": "git+https://github.com/nigel-daniels/MMM-AirNow"
+          },
+          "keywords": [
                     "magic mirror",
                     "smart mirror",
                     "air",
                     "quality",
                     "module"
-                    ],
-    "author":       "Nigel Daniels",
-    "contributors": "https://github.com/nigel-daniels/MMM-AirNow/graphs/contributors",
-    "license":      "MIT",
-    "bugs":         {
+          ],
+          "author": "Nigel Daniels",
+          "contributors": "https://github.com/nigel-daniels/MMM-AirNow/graphs/contributors",
+          "license": "MIT",
+          "bugs": {
                     "url": "https://github.com/nigel-daniels/MMM-AirNow/issues"
-                    },
-    "homepage":     "https://github.com/nigel-daniels/MMM-AirNow#readme",
-    "dependencies": {
-                    "request":  "latest"
-                    }
+          },
+          "homepage": "https://github.com/nigel-daniels/MMM-AirNow#readme",
+          "dependencies": {
+                    "request": "latest"
+          }
 }

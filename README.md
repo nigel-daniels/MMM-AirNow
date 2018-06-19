@@ -1,4 +1,6 @@
 # MMM-AirNow
+![Air now](airquality.png "Air now.")
+
 This is a module for the [MagicMirror](https://github.com/MichMich/MagicMirror/tree/develop). This module shows air quality based on the US AirNow API.
 
 ## Installation
