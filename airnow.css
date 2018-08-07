@@ -1,13 +1,21 @@
 .airLocation {
-  font-size: 40px;
-  text-align: center;
+  font-size: 20px;
   margin-bottom: 15px;
 }
 
 .airParameter {
-  text-align: left
+  text-align: left;
+  font-size: 16px;
 }
 
+.airAQI {
+  text-align: left;
+  font-size: 16px;
+}
+
+.airName {
+  font-size: 16px;
+}
 .airName.good {
   color: #00e400;
 }
