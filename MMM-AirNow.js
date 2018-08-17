@@ -17,10 +17,6 @@ Module.register('MMM-AirNow', {
     start:  function() {
         Log.log('Starting module: ' + this.name);
 
-        if (this.data.classes === 'MMM-AirNow') {
-            this.data.classes = 'bright medium';
-            }
-
         // Set up the local values, here we construct the request url to use
         this.loaded = false;
         this.url = 'http://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=' + this.config.zip_code + '&distance=25&API_KEY=' + this.config.api_key;
@@ -51,7 +47,7 @@ Module.register('MMM-AirNow', {
         // If we have some data to display then build the results table
         if (this.loaded) {
             wrapper = document.createElement('div');
-		    wrapper.className = 'airnow small';
+		    wrapper.className = 'airnow bright small';
 
             airLocation = document.createElement('div');
             airLocation.className = 'airLocation';
