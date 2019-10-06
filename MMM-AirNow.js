@@ -19,7 +19,7 @@ Module.register('MMM-AirNow', {
 
         // Set up the local values, here we construct the request url to use
         this.loaded = false;
-        this.url = 'http://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=' + this.config.zip_code + '&distance=25&API_KEY=' + this.config.api_key;
+        this.url = 'https://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=' + this.config.zip_code + '&distance=25&API_KEY=' + this.config.api_key;
         this.location = '';
         this.result = null;
 
