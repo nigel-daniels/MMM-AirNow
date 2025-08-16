@@ -1,36 +1,201 @@
+.airnow {
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+}
+
 .airLocation {
-  font-size: 20px;
-  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: 300;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.airnow table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
+}
+
+.airnow tr {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.airnow tr td {
+  padding: 10px 8px;
+  vertical-align: middle;
+}
+
+.airnow tr td:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.airnow tr td:last-child {
+  border-radius: 0 8px 8px 0;
 }
 
 .airParameter {
   text-align: left;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 400;
+  min-width: 100px;
 }
 
 .airAQI {
-  text-align: left;
-  font-size: 16px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  min-width: 60px;
+  position: relative;
 }
 
 .airName {
   font-size: 16px;
+  font-weight: 500;
+  text-align: right;
+  min-width: 140px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  letter-spacing: 0.3px;
 }
+
+/* Air Quality Color Coding with improved visibility */
+.airnow tr.good {
+  background: linear-gradient(90deg, rgba(0, 228, 0, 0.1) 0%, rgba(0, 228, 0, 0.05) 100%);
+}
+
 .airName.good {
+  background-color: rgba(0, 228, 0, 0.2);
   color: #00e400;
+  border: 1px solid rgba(0, 228, 0, 0.3);
 }
+
+.airnow tr.moderate {
+  background: linear-gradient(90deg, rgba(255, 255, 0, 0.1) 0%, rgba(255, 255, 0, 0.05) 100%);
+}
+
 .airName.moderate {
+  background-color: rgba(255, 255, 0, 0.2);
   color: #ffff00;
+  border: 1px solid rgba(255, 255, 0, 0.3);
 }
+
+.airnow tr.sensitive {
+  background: linear-gradient(90deg, rgba(255, 126, 0, 0.1) 0%, rgba(255, 126, 0, 0.05) 100%);
+}
+
 .airName.sensitive {
+  background-color: rgba(255, 126, 0, 0.2);
   color: #ff7e00;
+  border: 1px solid rgba(255, 126, 0, 0.3);
 }
+
+.airnow tr.unhealthy {
+  background: linear-gradient(90deg, rgba(255, 0, 0, 0.1) 0%, rgba(255, 0, 0, 0.05) 100%);
+}
+
 .airName.unhealthy {
+  background-color: rgba(255, 0, 0, 0.2);
   color: #ff0000;
+  border: 1px solid rgba(255, 0, 0, 0.3);
 }
+
+.airnow tr.v_unhealthy {
+  background: linear-gradient(90deg, rgba(153, 0, 76, 0.1) 0%, rgba(153, 0, 76, 0.05) 100%);
+}
+
 .airName.v_unhealthy {
+  background-color: rgba(153, 0, 76, 0.2);
   color: #99004c;
+  border: 1px solid rgba(153, 0, 76, 0.3);
 }
+
+.airnow tr.hazardous {
+  background: linear-gradient(90deg, rgba(126, 0, 35, 0.1) 0%, rgba(126, 0, 35, 0.05) 100%);
+}
+
 .airName.hazardous {
+  background-color: rgba(126, 0, 35, 0.2);
   color: #7e0023;
+  border: 1px solid rgba(126, 0, 35, 0.3);
+}
+
+/* Add spacing between rows */
+.airnow tr {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.airnow tr:last-child {
+  margin-bottom: 0;
+}
+
+/* Visual AQI indicator bar */
+.airAQIBar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  margin-top: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.airAQIBarFill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.airAQIBarFill.good {
+  background: #00e400;
+}
+
+.airAQIBarFill.moderate {
+  background: #ffff00;
+}
+
+.airAQIBarFill.sensitive {
+  background: #ff7e00;
+}
+
+.airAQIBarFill.unhealthy {
+  background: #ff0000;
+}
+
+.airAQIBarFill.v_unhealthy {
+  background: #99004c;
+}
+
+.airAQIBarFill.hazardous {
+  background: #7e0023;
+}
+
+/* Icon styling */
+.airIcon {
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 20px;
+  vertical-align: middle;
+  opacity: 0.8;
+}
+
+/* Animation for new data */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.airnow.updated {
+  animation: fadeIn 0.5s ease;
 }
