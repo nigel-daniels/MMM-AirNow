@@ -1,36 +1,144 @@
+.airnow {
+  line-height: 1.5;
+}
+
 .airLocation {
-  font-size: 20px;
-  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid #666;
+  opacity: 0.8;
+}
+
+.airnow table {
+  width: 100%;
+  border-spacing: 0 2px;
+  border-collapse: separate;
+}
+
+.airnow tr {
+  transition: opacity 0.3s ease;
+}
+
+.airnow tr td {
+  padding: 4px 0;
+  vertical-align: middle;
 }
 
 .airParameter {
   text-align: left;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 400;
+  padding-right: 15px;
+  opacity: 0.9;
 }
 
 .airAQI {
-  text-align: left;
+  text-align: center;
   font-size: 16px;
+  font-weight: 600;
+  padding: 0 15px;
+  position: relative;
+  opacity: 0.95;
 }
 
 .airName {
-  font-size: 16px;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: right;
+  padding-left: 15px;
+  opacity: 0.9;
 }
+
+/* Air Quality Color Coding - text only */
 .airName.good {
   color: #00e400;
 }
+
 .airName.moderate {
   color: #ffff00;
 }
+
 .airName.sensitive {
   color: #ff7e00;
 }
+
 .airName.unhealthy {
   color: #ff0000;
 }
+
 .airName.v_unhealthy {
   color: #99004c;
 }
+
 .airName.hazardous {
   color: #7e0023;
+}
+
+/* Visual AQI indicator bar - smaller and more subtle */
+.airAQIBar {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1px;
+  margin-top: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.airAQIBarFill {
+  height: 100%;
+  border-radius: 1px;
+  transition: width 0.5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.7;
+}
+
+.airAQIBarFill.good {
+  background: #00e400;
+}
+
+.airAQIBarFill.moderate {
+  background: #ffff00;
+}
+
+.airAQIBarFill.sensitive {
+  background: #ff7e00;
+}
+
+.airAQIBarFill.unhealthy {
+  background: #ff0000;
+}
+
+.airAQIBarFill.v_unhealthy {
+  background: #99004c;
+}
+
+.airAQIBarFill.hazardous {
+  background: #7e0023;
+}
+
+/* Icon styling - smaller and more subtle */
+.airIcon {
+  display: inline-block;
+  margin-right: 4px;
+  font-size: 12px;
+  vertical-align: middle;
+  opacity: 0.6;
+}
+
+/* Animation for new data - subtle */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.airnow.updated {
+  animation: fadeIn 0.5s ease;
 }
