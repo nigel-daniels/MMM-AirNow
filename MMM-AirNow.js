@@ -19,7 +19,7 @@ Module.register('MMM-AirNow', {
 
         // Set up the local values, here we construct the request url to use
         this.loaded = false;
-        this.url = 'https://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=' + this.config.zip_code + '&distance=25&API_KEY=' + this.config.api_key;
+		this.url = 'https://www.airnowapi.org/aq/observation/current/ziplatLong/?format=application/json&zipCode=' + this.config.zip_code + '&API_KEY=' + this.config.api_key;
         this.location = '';
         this.result = null;
 
@@ -62,31 +62,35 @@ Module.register('MMM-AirNow', {
                     var colourClass = '';
                     var catName = '';
 
-                    switch (this.result[i].Category.Number) {
-                        case 1:
+                    switch (this.result[i].aqiCategoryName) {
+                        case 'Good':
                             colourClass = 'good';
                             catName = 'Good';
                             break;
-                        case 2:
+                        case 'Moderate':
                             colourClass = 'moderate';
                             catName = 'Moderate';
                             break;
-                        case 3:
+                        case 'Unhealthy for Sensitive Groups':
                             colourClass = 'sensitive';
-                            catName = 'Sensitivity Risk';
+                            catName = 'Unhealthy for Sensitive Groups';
                             break;
-                        case 4:
+                        case 'Unhealthy':
                             colourClass = 'unhealthy';
                             catName = 'Unhealthy';
                             break;
-                        case 5:
+                        case 'Very Unhealthy':
                             colourClass = 'v_unhealthy';
                             catName = 'Very Unhealthy';
                             break;
-                        case 6:
+                        case 'Hazardous':
                             colourClass = 'hazardous';
                             catName = 'Hazardous';
                             break;
+						default:
+							colorClass = 'unavailable';
+							catName = 'Unavailable';
+							break;
                         }
 
                     airRow = document.createElement('tr');
@@ -94,11 +98,11 @@ Module.register('MMM-AirNow', {
 
                     airParameter = document.createElement('td');
                     airParameter.className = 'airParameter normal';
-                    airParameter.innerHTML = this.result[i].ParameterName;
+					airParameter.innerHTML = this.result[i].parameterName;
 
                     airAQI = document.createElement('td');
                     airAQI.className = 'airAQI normal';
-                    airAQI.innerHTML = this.result[i].AQI;
+                    airAQI.innerHTML = this.result[i].nowcastAQI;
 
                     airName = document.createElement('td');
                     airName.className ='airName ' + colourClass;

@@ -34,3 +34,6 @@
 .airName.hazardous {
   color: #7e0023;
 }
+.airName.unavailable {
+	color: #999999;
+}

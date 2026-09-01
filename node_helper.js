@@ -27,11 +27,11 @@ module.exports = NodeHelper.create({
         request({url: this.url, method: 'GET'}, function(error, response, body) {
             // Lets convert the body into JSON
             var result = JSON.parse(body);
-            
+
             // Check to see if we are error free and got an OK response
             if (!error && response.statusCode == 200) {
                 // Let's get the weather data for right now
-                that.location = result[0].ReportingArea;
+                that.location = result[0].reportingAreaName;
                 that.result = result;
             } else {
                 // In all other cases it's some other error
