@@ -3,6 +3,8 @@
 
 This is a module for the [MagicMirror](https://github.com/MichMich/MagicMirror/tree/develop). This module shows air quality based on the US AirNow API.
 
+*Updated:* Sep 2026 -  uses the new AirNow API.
+
 ## Installation
 1. Navigate into your MagicMirror's `modules` folder and execute `git clone https://github.com/nigel-daniels/MMM-AirNow`.  A new folder `MMM-AirNow` will appear, navigate into it.
 2. Execute `npm install` to install the node dependencies.
