@@ -25,20 +25,49 @@ module.exports = NodeHelper.create({
         this.url = payload;
 
         request({url: this.url, method: 'GET'}, function(error, response, body) {
-            // Lets convert the body into JSON
-            var result = JSON.parse(body);
-
+            var result = null;
+            
             // Check to see if we are error free and got an OK response
-            if (!error && response.statusCode == 200) {
-                // Let's get the weather data for right now
-                that.location = result[0].reportingAreaName;
-                that.result = result;
+            if (!error && response && response.statusCode == 200) {
+                try {
+                    // Lets convert the body into JSON
+                    result = JSON.parse(body);
+                    
+                    if (result && result.WebServiceError && Array.isArray(result.WebServiceError) && result.WebServiceError.length > 0) {
+                        // Short and clean error message for the mirror UI
+                        that.location = 'No observations available';
+                        that.result = null;
+                    } else if (result && Array.isArray(result) && result.length > 0) {
+                        var firstItem = result[0];
+                        if (firstItem.reportingAreaName || firstItem.ReportingArea) {
+                            that.location = firstItem.reportingAreaName || firstItem.ReportingArea;
+                            that.result = result;
+                        } else {
+                            that.location = 'No observations available';
+                            that.result = null;
+                        }
+                    } else if (result && (result.reportingAreaName || result.ReportingArea)) {
+                        that.location = result.reportingAreaName || result.ReportingArea;
+                        that.result = result;
+                    } else {
+                        // Truly invalid format or empty response
+                        console.error('MMM-AirNow received invalid structure:', body);
+                        that.location = 'No observations available';
+                        that.result = null;
+                    }
+                } catch (e) {
+                    console.error('MMM-AirNow JSON parse error:', e);
+                    that.location = 'Error parsing data';
+                    that.result = null;
+                }
             } else {
                 // In all other cases it's some other error
+                console.error('MMM-AirNow network error:', error || (response ? response.statusCode : 'no response'));
                 that.location = 'Error getting data';
-                }
+                that.result = null;
+            }
 
-            // We have the response figured out so lets fire off the notifiction
+            // We have the response figured out so lets fire off the notification
             that.sendSocketNotification('GOT-AIR-QUALITY', {'url': that.url, 'location': that.location, 'result': that.result});
             });
         },
@@ -52,3 +81,4 @@ module.exports = NodeHelper.create({
         }
 
     });
+
